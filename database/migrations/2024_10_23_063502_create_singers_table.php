@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('singers', function (Blueprint $table) {
             $table->id();
+            $table->string('name',100);
+            $table->string('type',30);
+            $table->string('nationality',100);
             $table->timestamps();
         });
     }
