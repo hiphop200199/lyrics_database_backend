@@ -23,14 +23,24 @@ class SongController extends Controller
         })->get()/* ->simplePaginate(10)->appends(['filter'=> $filter,'keyword'=>$keyword]) */;
         return $songs;
     }else{
-        $songs = Song::select('id','name')->where($filter,"like","%".$keyword."%")->simplePaginate(10)->appends(['filter'=> $filter,'keyword'=>$keyword]);
+        switch($filter){
+            case '歌名':
+                $filter = 'name';
+                break;
+            case '歌詞':
+                $filter = 'lyrics';
+                break;
+        }
+        $songs = Song::select('id','name')->where($filter,"like","%".$keyword."%")->get();
         return $songs;
     }
   }
   public function getSong(Request $request)
   {
     $id = $request->id;
-    $song = Song::find($id);
+    $song = song::select('songs.name','songs.lyricist','songs.composer','songs.lyrics','singers.name as singerName')->join('singers',function($join){
+        $join->on('songs.singer_id','=','singers.id');
+    })->where('songs.id', $id)->first();
     return $song;
   }
 }
