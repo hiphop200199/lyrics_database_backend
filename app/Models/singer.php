@@ -9,11 +9,11 @@ class singer extends Model
 {
     use HasFactory;
 
-    public function album()
+    public function albums()
     {
         return $this->hasMany(Album::class);
     }
-    public function song()
+    public function songs()
     {
         return $this->hasMany(Song::class);
     }

@@ -8,11 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class song extends Model
 {
     use HasFactory;
-    public function singer()
+    public function singers()
     {
         return $this->belongsTo(Singer::class);
     }
-    public function track()
+    public function tracks()
     {
         return $this->belongsToMany(Track::class);
     }
