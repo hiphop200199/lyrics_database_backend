@@ -1,6 +1,5 @@
 {
     "version": 2,
-      "framework": null,
     "functions": {
         "api/index.php": { "runtime": "vercel-php@0.6.2" }
     },
@@ -10,7 +9,7 @@
     }],
     "env": {
         "APP_ENV": "production",
-        "APP_DEBUG": "false",
+        "APP_DEBUG": "true",
         "APP_URL": "https://lyrics-database-backend.vercel.app",
 
         "APP_CONFIG_CACHE": "/tmp/config.php",
